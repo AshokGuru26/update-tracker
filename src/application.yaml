@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres.railway.internal:5432/railway
+    url: jdbc:postgresql://acela.proxy.rlwy.net:44751/railway
     username: postgres
     password: eKMTpmkVzwKsNMPxAaqsdExCFwpekbNQ
     driver-class-name: org.postgresql.Driver
@@ -8,7 +8,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
