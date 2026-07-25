@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/locations")
+@RequestMapping("/locations")
 public class LocationController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class LocationController {
 
         return ResponseEntity.accepted().build();
     }
-    @GetMapping("/hello")
+    @RequestMapping("/hello")
     public String Hello() {
         return "Hello";
     }
