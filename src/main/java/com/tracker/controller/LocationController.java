@@ -29,8 +29,4 @@ public class LocationController {
 
         return ResponseEntity.accepted().build();
     }
-    @RequestMapping("/hello")
-    public String Hello() {
-        return "Hello";
-    }
 }
