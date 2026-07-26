@@ -20,8 +20,12 @@ public class LocationEvent {
     @Column(name = "event_time", nullable = false)
     private LocalDateTime eventTime;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+        name = "user_id",
+        nullable = false
+    )
+    private User user;
 
     private Double latitude;
 
@@ -31,11 +35,4 @@ public class LocationEvent {
 
     private Double accuracy;
 
-    public LocationEvent(LocationRequest req ){
-        this.userId = req.userId();
-        this.latitude = req.latitude();
-        this.longitude = req.longitude();
-        this.speed = req.speed();
-        this.accuracy = req.accuracy();
-    }
 }
