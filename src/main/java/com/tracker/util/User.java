@@ -1,14 +1,10 @@
 package com.tracker.util;
 
-import java.time.LocalDateTime;
-
-import com.tracker.service.LocationService;
-
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tracking_user")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +19,7 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "phone_no", nullable = false)
+    @Column(name = "phone_no", nullable = false, unique = true)
     private String phoneNo;
 
     private String gaurdian;

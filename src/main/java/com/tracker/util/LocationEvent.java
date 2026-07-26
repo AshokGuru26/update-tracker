@@ -1,9 +1,6 @@
 package com.tracker.util;
 
 import java.time.LocalDateTime;
-
-import com.tracker.service.LocationService;
-
 import jakarta.persistence.*;
 import lombok.*;
 
