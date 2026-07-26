@@ -38,7 +38,7 @@ public class UserController {
         try{
             service.saveUser(request);
         } catch(Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body("Phone No. already Exist");
         }
         
         return ResponseEntity.accepted().body("User " + request.name() + " saved successfully");
