@@ -3,6 +3,7 @@ package com.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,10 +31,15 @@ public class UserController {
     }
 
     @PostMapping("/newUser")
-    public ResponseEntity<Void> submitUser(
+    public ResponseEntity<String> submitUser(
             @RequestBody UserRequest request) {
 
-        service.saveUser(request);
-        return ResponseEntity.accepted().build();
+        try{
+            service.saveUser(request);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        
+        return ResponseEntity.accepted().body("User " + request.name() + " saved successfully");
     }
 }
