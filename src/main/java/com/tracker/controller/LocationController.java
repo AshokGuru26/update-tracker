@@ -22,7 +22,7 @@ public class LocationController {
     @Autowired
     private final LocationService service;
 
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<Void> submitLocation(
             @RequestBody LocationRequest request) {
 
