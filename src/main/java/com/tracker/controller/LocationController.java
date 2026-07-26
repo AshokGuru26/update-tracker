@@ -26,7 +26,7 @@ public class LocationController {
     public ResponseEntity<Void> submitLocation(
             @RequestBody LocationRequest request) {
 
-        service.save(request);
+        service.saveLocation(request);
         return ResponseEntity.accepted().build();
     }
 }
