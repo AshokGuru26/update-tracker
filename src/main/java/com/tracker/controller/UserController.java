@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tracker.service.UserService;
 import com.tracker.util.User;
 import com.tracker.util.UserRequest;
+import com.tracker.util.UserResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,16 +35,24 @@ public class UserController {
     }
 
     @PostMapping("/newUser")
-    public ResponseEntity<String> submitUser(
+    public ResponseEntity<UserResponse> submitUser(
             @RequestBody UserRequest request) {
 
         try{
-            service.saveUser(request);
+            User savedUser = service.saveUser(request);
+
+            return ResponseEntity.accepted()
+                    .body(new UserResponse(
+                        savedUser.getUserId(),
+                        "User saved successfully"
+                    ));
         } catch(Exception e){
-            return ResponseEntity.badRequest().body("Phone No. already Exist");
+                        return ResponseEntity.accepted()
+                    .body(new UserResponse(
+                        null,
+                        "User saved successfully"
+                    ));
         }
-        
-        return ResponseEntity.accepted().body("User " + request.name() + " saved successfully");
     }
 
     @GetMapping("/user/{phoneNo}")
