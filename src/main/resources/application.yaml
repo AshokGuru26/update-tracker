@@ -1,10 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://acela.proxy.rlwy.net:44751/railway
+    url: jdbc:postgresql://postgres.railway.internal:5432/railway
     username: postgres
-    password: eKMTpmkVzwKsNMPxAaqsdExCFwpekbNQ
+    password: hmpEYEZHbmuxVIpoeFytoNdELamynrqB
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
