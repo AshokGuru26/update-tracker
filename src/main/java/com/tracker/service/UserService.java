@@ -26,4 +26,9 @@ public class UserService {
         User user = new User(userReq);
         repo.save(user);
     }
+
+    public User getUserByPhone(String phoneNo) {
+        return repo.findByPhoneNo(phoneNo)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }
