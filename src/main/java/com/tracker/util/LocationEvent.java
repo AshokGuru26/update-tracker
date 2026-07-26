@@ -1,18 +1,29 @@
 package com.tracker.util;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
+import com.tracker.service.LocationService;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "location_event")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class LocationEvent {
 
     @Id
-    private Instant eventTime;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "event_time", nullable = false)
+    private LocalDateTime eventTime;
+
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     private Double latitude;
@@ -23,6 +34,11 @@ public class LocationEvent {
 
     private Double accuracy;
 
-    private String source;
-
+    public LocationEvent(LocationRequest req ){
+        this.userId = req.userId();
+        this.latitude = req.latitude();
+        this.longitude = req.longitude();
+        this.speed = req.speed();
+        this.accuracy = req.accuracy();
+    }
 }
